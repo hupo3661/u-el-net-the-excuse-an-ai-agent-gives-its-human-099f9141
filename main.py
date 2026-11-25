@@ -163,8 +163,13 @@ def run() -> int:
     return 0
 
 
-def main() -> int:
-    """Entry point: map a bad line to exit code 1, success to 0."""
+def main(argv: list[str] | None = None) -> int:
+    """Entry point: map a bad line to exit code 1, success to 0.
+
+    ``argv`` is accepted (and ignored) so the entry point can be called
+    from tests without touching sys.argv.
+    """
+    del argv
     try:
         return run()
     except BadLine as exc:
